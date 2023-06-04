@@ -1,0 +1,5 @@
+score = [DT_SC,RF_SC,XGB_SC,LR_SC]
+Models = pd.DataFrame({
+    'n_neighbors': ["Decision Tree","Random Forest","XGBoost", "Logistic Regression"],
+    'Score': score})
+Models.sort_values(by='Score', ascending=False)
