@@ -1,0 +1,15 @@
+LR = LogisticRegression()
+LR.fit(X_train, y_train)
+
+y_predict = LR.predict(X_test)
+
+#  prediction Summary by species
+print(classification_report(y_test, y_predict))
+
+# Accuracy score
+LR_SC = accuracy_score(y_predict,y_test)
+print('accuracy is',accuracy_score(y_predict,y_test))
+
+Logistic_Regression=pd.DataFrame({'y_test':y_test,'prediction':y_predict})
+Logistic_Regression.to_csv("Logistic Regression.csv")     
+
