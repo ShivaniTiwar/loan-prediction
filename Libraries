@@ -1,0 +1,28 @@
+import os #paths to file
+import numpy as np # linear algebra
+import pandas as pd # data processing
+import warnings# warning filter
+​
+​
+#ploting libraries
+import matplotlib.pyplot as plt 
+import seaborn as sns
+​
+#relevant ML libraries
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score
+​
+#ML models
+from xgboost import XGBClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+​
+#default theme
+sns.set(context='notebook', style='darkgrid', palette='deep', font='sans-serif', font_scale=1, color_codes=False, rc=None)
+​
+#warning hadle
+warnings.filterwarnings("ignore")
