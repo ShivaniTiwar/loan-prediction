@@ -1,0 +1,18 @@
+#missing values in decsending order
+tr_df.isnull().sum().sort_values(ascending=False)
+
+#filling the missing data
+print("Before filling missing values\n\n","#"*50,"\n")
+null_cols = ['Credit_History', 'Self_Employed', 'LoanAmount','Dependents', 'Loan_Amount_Term', 'Gender', 'Married']
+
+
+for col in null_cols:
+    print(f"{col}:\n{tr_df[col].value_counts()}\n","-"*50)
+    tr_df[col] = tr_df[col].fillna(
+    tr_df[col].dropna().mode().values[0] )   
+
+    
+tr_df.isnull().sum().sort_values(ascending=False)
+print("After filling missing values\n\n","#"*50,"\n")
+for col in null_cols:
+    print(f"\n{col}:\n{tr_df[col].value_counts()}\n","-"*50)
