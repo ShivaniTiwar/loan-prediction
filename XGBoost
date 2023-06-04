@@ -1,0 +1,14 @@
+XGB = XGBClassifier()
+XGB.fit(X_train, y_train)
+
+y_predict = XGB.predict(X_test)
+
+#  prediction Summary by species
+print(classification_report(y_test, y_predict))
+
+# Accuracy score
+XGB_SC = accuracy_score(y_predict,y_test)
+print(f"{round(XGB_SC*100,2)}% Accurate")
+
+XGBoost=pd.DataFrame({'y_test':y_test,'prediction':y_predict})
+XGBoost.to_csv("XGBoost.csv")  
