@@ -1,0 +1,28 @@
+#converting categorical values to numbers
+​
+to_numeric = {'Male': 1, 'Female': 2,
+'Yes': 1, 'No': 2,
+'Graduate': 1, 'Not Graduate': 2,
+'Urban': 3, 'Semiurban': 2,'Rural': 1,
+'Y': 1, 'N': 0,
+'3+': 3}
+​
+# adding the new numeric values from the to_numeric variable to both datasets
+tr_df = tr_df.applymap(lambda lable: to_numeric.get(lable) if lable in to_numeric else lable)
+te_df = te_df.applymap(lambda lable: to_numeric.get(lable) if lable in to_numeric else lable)
+​
+# convertind the Dependents column
+Dependents_ = pd.to_numeric(tr_df.Dependents)
+Dependents__ = pd.to_numeric(te_df.Dependents)
+​
+# dropping the previous Dependents column
+tr_df.drop(['Dependents'], axis = 1, inplace = True)
+te_df.drop(['Dependents'], axis = 1, inplace = True)
+​
+# concatination of the new Dependents column with both datasets
+tr_df = pd.concat([tr_df, Dependents_], axis = 1)
+te_df = pd.concat([te_df, Dependents__], axis = 1)
+​
+# checking the our manipulated dataset for validation
+print(f"training set (row, col): {tr_df.shape}\n\ntesting set (row, col): {te_df.shape}\n")
+print(tr_df.info(), "\n\n", te_df.info())
