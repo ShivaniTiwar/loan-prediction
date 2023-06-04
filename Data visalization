@@ -1,0 +1,35 @@
+#list of all the columns.columns
+#Cols = tr_df.tolist()
+#list of all the numeric columns
+num = tr_df.select_dtypes('number').columns.to_list()
+#list of all the categoric columns
+cat = tr_df.select_dtypes('object').columns.to_list()
+
+#numeric df
+loan_num =  tr_df[num]
+#categoric df
+loan_cat = tr_df[cat]
+
+print(tr_df[cat[-1]].value_counts())
+#tr_df[cat[-1]].hist(grid = False)
+
+#print(i)
+total = float(len(tr_df[cat[-1]]))
+plt.figure(figsize=(8,10))
+sns.set(style="whitegrid")
+ax = sns.countplot(tr_df[cat[-1]])
+for p in ax.patches:
+    height = p.get_height()
+    ax.text(p.get_x()+p.get_width()/2.,height + 3,'{:1.2f}'.format(height/total),ha="center") 
+plt.show()
+
+for i in loan_num:
+    plt.hist(loan_num[i])
+    plt.title(i)
+    plt.show()
+    
+    for i in cat[:-1]: 
+    plt.figure(figsize=(15,10))
+    plt.subplot(2,3,1)
+    sns.countplot(x=i ,hue='Loan_Status', data=tr_df ,palette='plasma')
+    plt.xlabel(i, fontsize=14)
