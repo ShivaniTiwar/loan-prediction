@@ -1,0 +1,2 @@
+#plotting the correlation matrix
+sns.heatmap(tr_df.corr() ,cmap='cubehelix_r')
