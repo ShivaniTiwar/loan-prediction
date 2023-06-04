@@ -1,0 +1,23 @@
+# read in csv file as a DataFrame
+tr_df = pd.read_csv(tr_path)
+# explore the first 5 rows
+tr_df.head()
+
+# read in csv file as a DataFrame
+te_df = pd.read_csv(te_path)
+# explore the first 5 rows
+te_df.head()
+
+print(f"training set (row, col): {tr_df.shape}\n\ntesting set (row, col): {te_df.shape}")
+
+#column information
+tr_df.info(verbose=True, null_counts=True)
+
+#summary statistics
+tr_df.describe()
+
+#the Id column is not needed, let's drop it for both test and train datasets
+tr_df.drop('Loan_ID',axis=1,inplace=True)
+te_df.drop('Loan_ID',axis=1,inplace=True)
+#checking the new shapes
+print(f"training set (row, col): {tr_df.shape}\n\ntesting set (row, col): {te_df.shape}")
