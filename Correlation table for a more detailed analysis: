@@ -1,0 +1,3 @@
+#correlation table
+corr = tr_df.corr()
+corr.style.background_gradient(cmap='coolwarm').set_precision(2)
